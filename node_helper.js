@@ -17,7 +17,7 @@ module.exports = NodeHelper.create({
     process.stdout.on("data", (data)=>{
       console.log(data)
       var result = String.fromCharCode.apply(null, new Uint16Array(data))
-      this.sendSocketNotification("HERE_IS_DATA", data)
+      this.sendSocketNotification("HERE_IS_DATA", result)
     })
   }
 })
