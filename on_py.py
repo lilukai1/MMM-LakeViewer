@@ -37,7 +37,7 @@ def printme():
     tempJSON = get_lake_data(wqReportURL)
     temp = tempJSON[0]['Water Temperature'][-1]['value']
 
-    printstring = f"Lake temp is: {temp} degrees. \nOutflow is: {outflow} cfm."
+    printstring = "Lake temp is: ",temp," degrees. \nOutflow is: ",outflow," cfm."
     print(printstring)
     return printstring
 

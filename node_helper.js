@@ -16,6 +16,7 @@ module.exports = NodeHelper.create({
     var process = spawn("python", ["/MagicMirror/modules/MMM-LakeViewer.py"])
     process.stdout.on("data", (data)=>{
       console.log(data)
+      var result = String.fromCharCode.apply(null, new Uint16Array(data))
       this.sendSocketNotification("HERE_IS_DATA", data)
     })
   }
