@@ -13,7 +13,7 @@ module.exports = NodeHelper.create({
     }
   },
   job: function() {
-    var process = spawn("python", ["/home/pi/MagicMirror/modules/MMM-LakeViewer.py"])
+    var process = spawn("python", ["/home/pi/MagicMirror/modules/MMM-LakeViewer/MMM-LakeViewer.py"])
     process.stdout.on("data", (data)=>{
       console.log(data)
       var result = String.fromCharCode.apply(null, new Uint16Array(data))
