@@ -38,7 +38,9 @@ def printme():
     temp = tempJSON[0]['Water Temperature'][-1]['value']
 
     printstring = "Lake temp is: ",temp," degrees. \nOutflow is: ",outflow," cfm."
-    print(printstring)
-    return temp, outflow
+    #print(printstring)
+    print(temp, outflow)
+    return temp
+    
 
 printme()

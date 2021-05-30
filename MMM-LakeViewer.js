@@ -20,7 +20,9 @@ Module.register("MMM-LakeViewer", {
     switch(notification) {
       case "HERE_IS_DATA":
         var e = document.getElementById("DISPLAY")
-        e.textContent = "Lake temp is: ",payload," degrees. \nOutflow is: ",outflow," cfm."payload
+        var content = "Lake temp is: " +payload
+        e.textContent = content, payload
+
         break
     }
   },
