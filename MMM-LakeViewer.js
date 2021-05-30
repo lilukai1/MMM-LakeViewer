@@ -20,8 +20,8 @@ Module.register("MMM-LakeViewer", {
     switch(notification) {
       case "HERE_IS_DATA":
         var e = document.getElementById("DISPLAY")
-        htmls = document.createElement('p')
-        htmls = documument.innerText(payload)
+        e = document.createElement('p')
+        e = documument.innerText(payload)
         break
     }
   },
