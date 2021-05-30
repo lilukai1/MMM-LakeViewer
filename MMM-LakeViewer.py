@@ -39,6 +39,6 @@ def printme():
 
     printstring = "Lake temp is: ",temp," degrees. \nOutflow is: ",outflow," cfm."
     print(printstring)
-    return printstring
+    return temp, outflow
 
 printme()
