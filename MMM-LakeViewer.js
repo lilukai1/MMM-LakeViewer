@@ -23,7 +23,7 @@ Module.register("MMM-LakeViewer", {
         var temp, outflow;
         var content = JSON.parse(payload)
         temp = "Lake temp is: " +content.temp;
-        outflow = 'Spillway: '+content.outflow;
+        outflow = '  Spillway: '+content.outflow;
         var texts = temp+outflow
         e.textContent = temp + outflow
 
