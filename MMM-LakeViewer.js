@@ -22,10 +22,10 @@ Module.register("MMM-LakeViewer", {
         var e = document.getElementById("DISPLAY")
         var temp, outflow;
         var content = JSON.parse(payload)
-        temp = "Lake temp is: " +content.temp;
-        outflow = '  Spillway: '+content.outflow;
+        temp = ` temp is: ${content.temp}.  `;
+        outflow = `Spillway: ${content.outflow}. `;
         var texts = temp+outflow
-        e.textContent = temp + outflow
+        e.textContent = content.description + temp + outflow
 
         break
     }
