@@ -43,7 +43,6 @@ def get_lake_data(urlextension, loc_id):
     'locSummaryURL' : "CWMS_CRREL.cwms_data_api.get_loc_summary_json?p_location_id="+loc_id+"&p_source=CWMS&p_unit_system=EN&p_format=JSON",
     'annualVariabilityURL' : "CWMS_CRREL.cwms_data_api.get_annual_variability_json?p_id="+loc_id
     }
-    print(URL+urlextension)
     y = requests.get(URL+urlextensions[urlextension])
     return y.json()
 
