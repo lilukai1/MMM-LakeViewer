@@ -26,8 +26,8 @@ Module.register("MMM-LakeViewer", {
         temp = ` temp is: ${content.temp}.  `;
         outflow = `Spillway: ${content.outflow}. `;
         var texts = temp+outflow
-        e.textContent = description + temp + outflow
-
+        // e.textContent = description + temp + outflow
+        e.textContent = payload
         break
     }
   },
