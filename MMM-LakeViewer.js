@@ -20,6 +20,7 @@ Module.register("MMM-LakeViewer", {
     switch(notification) {
       case "HERE_IS_DATA":
         var e = document.getElementById("DISPLAY")
+        var temp, outflow;
         var content = "Lake temp is: " +payload
         e.textContent = content, payload
 

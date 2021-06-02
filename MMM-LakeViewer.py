@@ -39,8 +39,13 @@ def printme():
 
     printstring = "Lake temp is: ",temp," degrees. \nOutflow is: ",outflow," cfm."
     #print(printstring)
-    print(temp, outflow)
-    return temp
+    data = {
+        'temp':temp,
+        'outflow':outflow,
+        'message':'HERE_IS_DATA',
+        'Response':200
+    }
+    print(json.dumps(data))
     
 
 printme()

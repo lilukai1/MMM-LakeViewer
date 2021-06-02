@@ -13,11 +13,16 @@ module.exports = NodeHelper.create({
     }
   },
   job: function() {
-    var process = spawn("python", ["/home/pi/MagicMirror/modules/MMM-LakeViewer/MMM-LakeViewer.py"])
+    // var process = spawn("python", ["/home/pi/MagicMirror/modules/MMM-LakeViewer/MMM-LakeViewer.py"])
+    var process = spawn("python", ["C:/Users/Annie/Documents/GitHub/RaspberryPiProjects/MMM-LakeViewer/MMM-LakeViewer.py"])
+
     process.stdout.on("data", (data)=>{
       console.log(data)
       var result = String.fromCharCode.apply(null, new Uint16Array(data))
-      this.sendSocketNotification("HERE_IS_DATA", result)
+      // var result = data.
+      myjson= JSON.parse(result)
+      this.sendSocketNotification("HERE_IS_DATA", myjson)
+      console.log(myjson.Data)
     })
   }
 })
