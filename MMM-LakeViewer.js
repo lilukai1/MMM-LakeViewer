@@ -21,7 +21,10 @@ Module.register("MMM-LakeViewer", {
       case "HERE_IS_DATA":
         var e = document.getElementById("DISPLAY")
         var temp, outflow;
-        var content = "Lake temp is: " +payload
+        temp = "Lake temp is: " +payload.temp;
+        outflow = 'Spillway: '+payload.outflow;
+        var content = temp+outflow
+
         e.textContent = content, payload
 
         break
