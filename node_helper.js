@@ -13,8 +13,8 @@ module.exports = NodeHelper.create({
     }
   },
   job: function() {
-    // var process = spawn("python", ["/home/pi/MagicMirror/modules/MMM-LakeViewer/MMM-LakeViewer.py"])
-    var process = spawn("python", ["C:/Users/Annie/Documents/GitHub/RaspberryPiProjects/MMM-LakeViewer/MMM-LakeViewer.py"])
+    var process = spawn("python", ["/home/pi/MagicMirror/modules/MMM-LakeViewer/MMM-LakeViewer.py"])
+    // var process = spawn("python", ["C:/Users/Annie/Documents/GitHub/RaspberryPiProjects/MMM-LakeViewer/MMM-LakeViewer.py"])
 
     process.stdout.on("data", (data)=>{
       console.log(data)
