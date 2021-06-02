@@ -20,12 +20,13 @@ Module.register("MMM-LakeViewer", {
     switch(notification) {
       case "HERE_IS_DATA":
         var e = document.getElementById("DISPLAY")
-        var temp, outflow;
+        var temp, outflow, description;
         var content = JSON.parse(payload)
+        description = `${content.description}`
         temp = ` temp is: ${content.temp}.  `;
         outflow = `Spillway: ${content.outflow}. `;
         var texts = temp+outflow
-        e.textContent = content.description + temp + outflow
+        e.textContent = description + temp + outflow
 
         break
     }
