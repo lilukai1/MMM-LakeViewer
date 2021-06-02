@@ -25,7 +25,7 @@ Module.register("MMM-LakeViewer", {
         temp = "Lake temp is: " +content.temp;
         outflow = 'Spillway: '+content.outflow;
         var texts = temp+outflow
-        e.textContent = content
+        e.textContent = temp
 
         break
     }
