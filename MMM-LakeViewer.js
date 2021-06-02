@@ -21,7 +21,7 @@ Module.register("MMM-LakeViewer", {
       case "HERE_IS_DATA":
         var e = document.getElementById("DISPLAY")
         var temp, outflow;
-        content = JSON.parse(payload)
+        var content = JSON.parse(payload)
         temp = "Lake temp is: " +content.temp;
         outflow = 'Spillway: '+content.outflow;
         var texts = temp+outflow
