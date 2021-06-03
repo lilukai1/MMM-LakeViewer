@@ -31,6 +31,7 @@ Module.register("MMM-LakeViewer", {
         var pomdescription = `${content.lakes.PomonaLake.description}`        
         var pomtemp = ` temp is: ${content.lakes.PomonaLake.temp}.  `;
         var pomoutflow = `Spillway: ${content.lakes.PomonaLake.outflow}. `;
+        e.textContent= `Desc: ${meldescription}`
         e.textContent = `${content.MelvernLake.description} temp is ${content.MelvernLake.temp}.  Spillway ${content.MelvernLake.outflow}.
         ${content.PomonaLake.description} temp is ${content.PomonaLake.temp}.  Spillway ${content.PomonaLake.outflow}.`
         break
