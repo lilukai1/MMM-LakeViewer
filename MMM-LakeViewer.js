@@ -25,15 +25,15 @@ Module.register("MMM-LakeViewer", {
         var temp, outflow, description;
         var content = JSON.parse(payload)
         
-        var meldescription = `${content.lakes.MelvernLake.description}`        
-        var meltemp = ` temp is: ${content.lakes.MelvernLake.temp}.  `;
-        var meloutflow = `Spillway: ${content.lakes.MelvernLake.outflow}. `;
-        var pomdescription = `${content.lakes.PomonaLake.description}`        
-        var pomtemp = ` temp is: ${content.lakes.PomonaLake.temp}.  `;
-        var pomoutflow = `Spillway: ${content.lakes.PomonaLake.outflow}. `;
-        e.textContent= `Desc: ${meldescription}`
-        e.textContent = `${content.MelvernLake.description} temp is ${content.MelvernLake.temp}.  Spillway ${content.MelvernLake.outflow}.
-        ${content.PomonaLake.description} temp is ${content.PomonaLake.temp}.  Spillway ${content.PomonaLake.outflow}.`
+        // var meldescription = `${content.lakes.MelvernLake.description}`        
+        // var meltemp = ` temp is: ${content.lakes.MelvernLake.temp}.  `;
+        // var meloutflow = `Spillway: ${content.lakes.MelvernLake.outflow}. `;
+        // var pomdescription = `${content.lakes.PomonaLake.description}`        
+        // var pomtemp = ` temp is: ${content.lakes.PomonaLake.temp}.  `;
+        // var pomoutflow = `Spillway: ${content.lakes.PomonaLake.outflow}. `;
+        // e.textContent= `Desc: ${meldescription}`
+        e.textContent = `${content.lakes.MelvernLake.description} temp is ${content.lakes.MelvernLake.temp}.  Spillway ${content.lakes.MelvernLake.outflow}.
+        ${content.lakes.PomonaLake.description} temp is ${content.lakes.PomonaLake.temp}.  Spillway ${content.lakes.PomonaLake.outflow}.`
         break
     }
   },
