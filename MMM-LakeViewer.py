@@ -37,6 +37,9 @@ PomonaLake = {
     "lon": "-95.5582047"
 }
 
+SaltCreek = {
+    'url':"https://waterservices.usgs.gov/nwis/iv/?format=json&sites=06911490&parameterCd=00060,00065&siteStatus=all"
+}
 lakes = {
     'MelvernLake':MelvernLake,
     'PomonaLake':PomonaLake
@@ -72,6 +75,11 @@ def printme():
         # #for temp
         tempJSON = get_lake_data('wqReportURL', val['loc_id'])
         val['temp'] = tempJSON[0]['Water Temperature'][-1]['value']
+    
+    flow = requests.get(SaltCreek['url'])
+    flow=flow.json()
+    data['SaltCreek'] = flow['value']['timeSeries'][1]['variable']['variableCode'][0]['value']
+    data['SaltCreek'] = data['SaltCreek'].lstrip("0")
     print(json.dumps(data))
     
 
