@@ -78,8 +78,10 @@ def printme():
     
     flow = requests.get(SaltCreek['url'])
     flow=flow.json()
-    data['SaltCreek'] = flow['value']['timeSeries'][1]['variable']['variableCode'][0]['value']
-    data['SaltCreek'] = data['SaltCreek'].lstrip("0")
+    SaltCreek['flow'] = flow['value']['timeSeries'][0]['variable']['variableCode'][0]['value'].lstrip('0')
+    # SaltCreek['flow'] = data['SaltCreek'].lstrip("0")
+    SaltCreek['height'] = flow['value']['timeSeries'][1]['values'][0]['value'][0]['value']
+    data['SaltCreek'] = SaltCreek
     print(json.dumps(data))
     
 
