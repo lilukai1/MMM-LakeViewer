@@ -24,11 +24,15 @@ Module.register("MMM-LakeViewer", {
 
         var temp, outflow, description;
         var content = JSON.parse(payload)
-        var description = `${content.description}`        
-        temp = ` temp is: ${content.temp}.  `;
-        outflow = `Spillway: ${content.outflow}. `;
-        var texts = temp+outflow
-        e.textContent = `${description} temp is ${content.temp}.  Spillway ${content.outflow}.`
+        
+        var meldescription = `${content.lakes.MelvernLake.description}`        
+        var meltemp = ` temp is: ${content.lakes.MelvernLake.temp}.  `;
+        var meloutflow = `Spillway: ${content.lakes.MelvernLake.outflow}. `;
+        var pomdescription = `${content.lakes.PomonaLake.description}`        
+        var pomtemp = ` temp is: ${content.lakes.PomonaLake.temp}.  `;
+        var pomoutflow = `Spillway: ${content.lakes.PomonaLake.outflow}. `;
+        e.textContent = `${meldescription} temp is ${meltemp}.  Spillway ${meloutflow}.
+        ${pomdescription} temp is ${pomtemp}.  Spillway ${pomoutflow}.`
         break
     }
   },
