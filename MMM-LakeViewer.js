@@ -25,9 +25,20 @@ Module.register("MMM-LakeViewer", {
         var temp, outflow, description;
         var content = JSON.parse(payload)
         
-        e.innerHTML = `${content.lakes.MelvernLake.description} temp is ${content.lakes.MelvernLake.temp}.  Spillway ${content.lakes.MelvernLake.outflow}.<br>
-        ${content.lakes.PomonaLake.description} temp is ${content.lakes.PomonaLake.temp}.  Spillway ${content.lakes.PomonaLake.outflow}.<br>
-        Salt Creek is at ${content.SaltCreek.height} ft with ${content.SaltCreek.flow} cfm flow`
+        var laketext = `${content.lakes.MelvernLake.description} temp is ${content.lakes.MelvernLake.temp}.  Spillway ${content.lakes.MelvernLake.outflow} cfm.<br>`
+        var riverjson = content.rivers
+        var rivertext = ``
+        for (let i = 0; i < riverjson.length; i++) {
+          var rtext = `${i.description} is ${i.height} above guage with ${i.flow} cfm flow. <br>`
+          rivertext += rtext;
+        }
+
+        e.innerHTML = 
+        `Current Lake and River Conditions<br>
+        ${laketext}
+        ${rivertext}
+        `
+        
         break
     }
   },

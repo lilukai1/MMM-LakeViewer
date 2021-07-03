@@ -1,7 +1,14 @@
 import json
 import requests
 import sys
+import geocoder
+import time
+from pprint import pprint
 
+g = geocoder.ip('me')
+glat = g.lat
+glon = g.lng
+print(glat, glon)
 MelvernLake = {
     "loc_id": '15302030',
     "description": "Melvern Dam & Reservoir",
@@ -37,17 +44,31 @@ PomonaLake = {
     "lon": "-95.5582047"
 }
 
-SaltCreek = {
-    'url':"https://waterservices.usgs.gov/nwis/iv/?format=json&sites=06911490&parameterCd=00060,00065&siteStatus=all"
+
+CurrentLocation = {
+    "bounding_box": g.latlng,
+    'url': f"https://waterservices.usgs.gov/nwis/iv/?format=JSON&bBox={glon-.1},{glat-.1},{round(glon+.1,4)},{round(glat+.1,4)}&parameterCd=00060,00065&siteStatus=all",
+#     "loc_id": ,
+#     "description": 
+}
+
+
+RoaringRiver = {
+    'url':"https://waterservices.usgs.gov/nwis/iv/?format=json&sites=07050152&parameterCd=00060,00065&siteStatus=all"
 }
 lakes = {
     'MelvernLake':MelvernLake,
-    'PomonaLake':PomonaLake
+    # 'CurrentLocation': CurrentLocation
+}
+rivers = {
+    'RoaringRiver': RoaringRiver,
+    'CurrentLocation' : CurrentLocation,
 }
 data = {
     'message':'HERE_IS_DATA',
     'Response':200,
-    'lakes':lakes
+    'lakes':lakes,
+    'rivers':rivers
 }
 def get_lake_data(urlextension, loc_id):
     URL = "https://water.usace.army.mil/a2w/"
@@ -66,23 +87,37 @@ def get_lake_data(urlextension, loc_id):
     return y.json()
 
 def printme():
+
     for val in lakes.values():
-        # print(val)
         #For outflow levels:
         lakeJSON = get_lake_data('reportURL', val['loc_id'])
         val['outflow'] = lakeJSON[1]['Outflow'][-1]['value']
-
         # #for temp
         tempJSON = get_lake_data('wqReportURL', val['loc_id'])
         val['temp'] = tempJSON[0]['Water Temperature'][-1]['value']
-    
-    flow = requests.get(SaltCreek['url'])
-    flow=flow.json()
-    SaltCreek['flow'] = flow['value']['timeSeries'][0]['variable']['variableCode'][0]['value'].lstrip('0')
-    # SaltCreek['flow'] = data['SaltCreek'].lstrip("0")
-    SaltCreek['height'] = flow['value']['timeSeries'][1]['values'][0]['value'][0]['value']
-    data['SaltCreek'] = SaltCreek
-    print(json.dumps(data))
-    
+
+    for r in rivers.values():
+        flow = requests.get(r['url'])
+        flow=flow.json()
+        print(len(flow['value']['timeSeries']))
+        # for i in flow['value']['timeSeries']:
+        #     sitecode = flow['value']['timeSeries'][i]['sourceInfo']['siteCode'][0]['value']
+        #     tempdict = {}
+        #     tempdict['description'] = flow['value']['timeSeries'][0]['sourceInfo']['siteName']
+        #     tempdict['flow'] = flow['value']['timeSeries'][0]['variable']['variableCode'][0]['value'].lstrip('0')
+        #     tempdict['height'] = flow['value']['timeSeries'][1]['values'][0]['value'][0]['value']
+        #     r[sitecode] = tempdict
+        for i in flow['value']['timeSeries']:
+            sitecode = i['sourceInfo']['siteCode'][0]['value']
+            tempdict = {}
+            tempdict['description'] = i['sourceInfo']['siteName']
+            tempdict['flow'] = i['variable']['variableCode'][0]['value'].lstrip('0')
+            tempdict['height'] = i['values'][0]['value'][0]['value']
+            r[sitecode] = tempdict
+
+data['rivers'] = {'rivers':rivers}
+
+    #https://maps.waterdata.usgs.gov/mapper/index.html?MapCenterX=-96.0&MapCenterY=36.0&MapZoom=4.
 
 printme()
+print(json.dumps(data))
