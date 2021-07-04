@@ -47,7 +47,7 @@ PomonaLake = {
 
 CurrentLocation = {
     "bounding_box": g.latlng,
-    'url': f"https://waterservices.usgs.gov/nwis/iv/?format=JSON&bBox={glon-.1},{glat-.1},{round(glon+.1,4)},{round(glat+.1,4)}&parameterCd=00060,00065&siteStatus=all",
+    'url': f"https://waterservices.usgs.gov/nwis/iv/?format=JSON&bBox={round(glon-.1,4)},{round(glat-.1,4)},{round(glon+.1,4)},{round(glat+.1,4)}&parameterCd=00060,00065&siteStatus=all",
 #     "loc_id": ,
 #     "description": 
 }
