@@ -5,6 +5,7 @@ Module.register("MMM-LakeViewer", {
   getDom: function() {
     var e = document.createElement("div")
     e.id = "DISPLAY"
+    e.innerHTML = `Loading Water Data....`
     return e
   },
   notificationReceived: function(notification, payload, sender) {
@@ -19,7 +20,7 @@ Module.register("MMM-LakeViewer", {
   socketNotificationReceived: function(notification, payload) {
     switch(notification) {
       case "HERE_IS_DATA":
-        var e = document.getElementById("DISPLAY").innerHTML = `Loading Water Data....`
+        var e = document.getElementById("DISPLAY");
         // e.textContent = payload
 
         var temp, outflow, description;
@@ -33,12 +34,12 @@ Module.register("MMM-LakeViewer", {
           rivertext += rtext;
         }
 
-        e.innerHTML = 
-        `Current Lake and River Conditions<br>
-        ${laketext}
+        e.innerHTML = `<p>Current Lake and River Conditions<br>
+        ${laketext}<br>
         ${rivertext}
         `;
-
+        
+        return e
         
         break
     }
