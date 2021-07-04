@@ -35,6 +35,7 @@ Module.register("MMM-LakeViewer", {
         }
 
         e.innerHTML = `<p>Current Lake and River Conditions<br>
+        ${content.lakes.MelvernLake.description}
         ${laketext}<br>
         ${rivertext}
         `;
