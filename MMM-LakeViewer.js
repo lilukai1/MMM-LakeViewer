@@ -19,15 +19,15 @@ Module.register("MMM-LakeViewer", {
   socketNotificationReceived: function(notification, payload) {
     switch(notification) {
       case "HERE_IS_DATA":
-        var e = document.getElementById("DISPLAY")
+        var e = document.getElementById("DISPLAY").innerHTML = `Loading Water Data....`
         // e.textContent = payload
 
         var temp, outflow, description;
-        var content = JSON.parse(payload)
+        var content = JSON.parse(payload);
         
-        var laketext = `${content.lakes.MelvernLake.description} temp is ${content.lakes.MelvernLake.temp}.  Spillway ${content.lakes.MelvernLake.outflow} cfm.<br>`
-        var riverjson = content.rivers
-        var rivertext = ``
+        var laketext = `${content.lakes.MelvernLake.description} temp is ${content.lakes.MelvernLake.temp}.  Spillway ${content.lakes.MelvernLake.outflow} cfm.<br>`;
+        var riverjson = content.rivers;
+        var rivertext = ``;
         for (let i = 0; i < riverjson.length; i++) {
           var rtext = `${i.description} is ${i.height} above guage with ${i.flow} cfm flow. <br>`
           rivertext += rtext;
@@ -37,7 +37,8 @@ Module.register("MMM-LakeViewer", {
         `Current Lake and River Conditions<br>
         ${laketext}
         ${rivertext}
-        `
+        `;
+
         
         break
     }
