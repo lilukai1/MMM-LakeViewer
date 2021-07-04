@@ -22,7 +22,7 @@ Module.register("MMM-LakeViewer", {
       case "HERE_IS_DATA":
         var e = document.getElementById("DISPLAY");
         // e.textContent = payload
-
+        e.innerHTML = `Failed to Load...`
         var temp, outflow, description;
         var content = JSON.parse(payload);
         
